@@ -7,7 +7,6 @@ const pool = new Pool({
     database: "customer",
     password: "oster1ossi"
 })
-
 module.exports = {
     query: (text, params) => pool.query(text, params),
 }
