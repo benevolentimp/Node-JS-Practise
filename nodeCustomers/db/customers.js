@@ -59,6 +59,14 @@ const deleteCustomer = (req, res) => {
     res.status(204).end();
 };
 
+const deleteAllCustomers = () => {
+    db.query('DELETE FROM customers', (err, res) => {
+        if (err) {
+            return console.error('Error executing query', err.stack);
+        }
+    })
+}
+
 const getCustomerById = (req, res) => {
     const query = {
         text: 'SELECT * FROM customers WHERE id = $1',
@@ -83,5 +91,6 @@ module.exports = {
     getCustomerById: getCustomerById,
     addCustomer: addCustomer,
     deleteCustomer: deleteCustomer,
+    deleteAllCustomers: deleteAllCustomers,
     updateCustomer: updateCustomer,
 }
